@@ -422,14 +422,19 @@ class SupabaseRepo implements Repo {
         .from('reports')
         .select(_sel)
         .eq('reporter_id', _user!.id)
-        .order('created_at', ascending: false);
+        .order('created_at', ascending: false)
+        .limit(100);
     return [for (final r in rows) _map(Map<String, dynamic>.from(r))];
   }
 
   @override
   Future<List<Report>> allReports() async {
     final rows =
-        await _c.from('reports').select(_sel).order('created_at', ascending: false);
+        await _c
+            .from('reports')
+            .select(_sel)
+            .order('created_at', ascending: false)
+            .limit(100);
     return [for (final r in rows) _map(Map<String, dynamic>.from(r))];
   }
 
@@ -467,7 +472,7 @@ class SupabaseRepo implements Repo {
 
   @override
   Future<List<Partner>> partners() async {
-    final rows = await _c.from('partners').select().order('name');
+    final rows = await _c.from('partners').select().order('name').limit(200);
     return [
       for (final j in rows)
         Partner(

@@ -53,3 +53,15 @@ Reporters cannot see which check flagged them (so they cannot tune around the ch
 ## Tested
 - SQL migration run on a local PostgreSQL 16 with stubs for the Supabase auth and storage schemas: duplicate photo, duplicate address, weight range, role escalation blocked, reporter cannot see flags or other people's bank rows, admin cannot read bank, finance can, double payment blocked, data deletion.
 - NOT tested against a real Supabase project (no project exists yet). Auth emails, storage uploads, and the Dart Supabase calls are unverified.
+
+## UI notes (Design B, phone first)
+- Indonesian UI, big buttons, bottom tabs, sticky action bar, inline field errors, labeled steps.
+- Photos are resized to 1600 px and saved as JPG before upload (3 to 8 MB phone photos become small). PDF max 5 MB.
+- Lists load the latest 100 reports and 200 partners (no paging UI yet).
+- Light theme only. Dark mode is not supported.
+- Status is shown with an icon and a word, not color alone.
+
+## Database safety
+- `supabase/rollback/0001_init_down.sql` undoes the first migration (deletes all app data).
+- `supabase/tests/0001_test.sql` is a local-only SQL test (run on a fresh throwaway Postgres with `stub_local_only.sql` first).
+- Not yet done: automatic SQL tests in CI, a paged list screen, dark mode.

@@ -1,11 +1,11 @@
 {
-    "name": "jemput_ban",
-    "short_name": "jemput_ban",
+    "name": "Jemput Ban",
+    "short_name": "Jemput Ban",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0E7A55",
+    "theme_color": "#0E7A55",
+    "description": "Lapor dan jemput ban bekas. Versi demo.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
